@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Ravi Woolhouse Read — Film & Photography</title>
+<title id="site-title">Ravi Woolhouse Read — Film & Photography</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 <style>
@@ -21,9 +21,9 @@ body{font-family:'DM Sans',sans-serif;background:var(--surface);color:var(--dark
 .loading-inner p{font-size:12px;color:#5a4030;letter-spacing:0.15em;text-transform:uppercase}
 .port{max-width:900px;margin:0 auto;padding:0 1.5rem 5rem}
 .hidden{display:none!important}
-nav{display:flex;align-items:center;justify-content:space-between;padding:1.5rem 0;border-bottom:1px solid var(--border)}
+nav{display:flex;align-items:center;justify-content:space-between;padding:1.5rem 0;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:10px}
 .nav-logo{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:600;color:var(--dark)}
-.nav-links{display:flex;gap:1.5rem;align-items:center}
+.nav-links{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap}
 .nav-links a{font-size:13px;color:var(--muted);text-decoration:none;cursor:pointer;transition:color 0.2s}
 .nav-links a:hover{color:var(--orange)}
 .nav-admin-btn{font-size:11px;color:var(--border-strong);cursor:pointer;padding:4px 10px;border:1px solid var(--border);border-radius:4px;background:transparent;font-family:'DM Sans',sans-serif;transition:all 0.2s}
@@ -116,9 +116,14 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:1.5rem
 footer{border-top:1px solid var(--border);padding:2rem 0 0;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 footer p{font-size:12px;color:var(--muted)}
 .footer-logo{font-family:'Playfair Display',serif;font-size:1rem;color:var(--dark);font-weight:600}
+.social-links{display:flex;gap:12px;margin-top:10px;flex-wrap:wrap}
+.social-links a{font-size:13px;color:var(--orange);text-decoration:none}
+.social-links a:hover{text-decoration:underline}
+
+/* ADMIN */
 #admin-view{display:none;max-width:900px;margin:0 auto;padding:2rem 1.5rem 5rem}
 #admin-view.active{display:block}
-.admin-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border)}
+.admin-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:2rem;padding-bottom:1.5rem;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:10px}
 .admin-header h1{font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:600}
 .admin-header h1 span{color:var(--orange)}
 .admin-tabs{display:flex;gap:4px;margin-bottom:2rem;background:var(--white);border:1px solid var(--border);border-radius:8px;padding:4px;width:fit-content;flex-wrap:wrap}
@@ -128,6 +133,7 @@ footer p{font-size:12px;color:var(--muted)}
 .admin-panel.active{display:block}
 .admin-card{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:1.5rem;margin-bottom:1rem}
 .admin-card h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:600;margin-bottom:1rem;color:var(--dark)}
+.admin-card h4{font-size:13px;font-weight:500;color:var(--muted);margin:1.2rem 0 0.6rem;padding-top:1rem;border-top:1px solid var(--border)}
 .form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px}
 @media(max-width:540px){.form-row{grid-template-columns:1fr}}
 .form-group{display:flex;flex-direction:column;gap:4px;margin-bottom:10px}
@@ -135,6 +141,7 @@ footer p{font-size:12px;color:var(--muted)}
 .form-group input,.form-group textarea,.form-group select{font-family:'DM Sans',sans-serif;font-size:13px;padding:9px 12px;border:1px solid var(--border);border-radius:6px;background:var(--surface);color:var(--dark);outline:none;transition:border-color 0.15s;width:100%}
 .form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--orange-light)}
 .form-group textarea{resize:vertical;min-height:80px}
+.form-hint{font-size:11px;color:var(--muted);margin-top:2px}
 .item-list{display:flex;flex-direction:column;gap:8px;margin-top:1rem}
 .item-row{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--surface);border:1px solid var(--border);border-radius:7px}
 .item-row-thumb{width:44px;height:44px;border-radius:5px;object-fit:cover;background:var(--dark);flex-shrink:0}
@@ -175,7 +182,7 @@ footer p{font-size:12px;color:var(--muted)}
 
 <div id="loading">
   <div class="loading-inner">
-    <div class="logo">Ravi Woolhouse Read</div>
+    <div class="logo" id="loading-name">Ravi Woolhouse Read</div>
     <p>Film &amp; Photography</p>
   </div>
 </div>
@@ -194,11 +201,12 @@ footer p{font-size:12px;color:var(--muted)}
 
 <div id="toast"></div>
 
+<!-- PUBLIC SITE -->
 <div id="public-view">
   <div class="port">
     <nav>
-      <div class="nav-logo">Ravi Woolhouse Read</div>
-      <div class="nav-links">
+      <div class="nav-logo" id="nav-logo">Ravi Woolhouse Read</div>
+      <div class="nav-links" id="nav-links">
         <a onclick="scrollToId('work')">Work</a>
         <a onclick="scrollToId('about')">About</a>
         <a onclick="scrollToId('contact')">Contact</a>
@@ -208,9 +216,9 @@ footer p{font-size:12px;color:var(--muted)}
 
     <div class="hero">
       <div class="hero-left">
-        <p class="eyebrow">Film · Photography · Videography</p>
-        <h1>Telling stories<br>through <em>light<br>&amp; motion.</em></h1>
-        <p class="hero-sub">I capture moments and craft narratives — through analogue film, digital photography and video. Based in Portsmouth.</p>
+        <p class="eyebrow" id="hero-eyebrow">Film · Photography · Videography</p>
+        <h1 id="hero-heading">Telling stories<br>through <em>light<br>&amp; motion.</em></h1>
+        <p class="hero-sub" id="hero-sub">I capture moments and craft narratives — through analogue film, digital photography and video. Based in Portsmouth.</p>
         <div class="hero-btns">
           <button class="btn btn-primary" onclick="scrollToId('work')">View my work ↓</button>
           <button class="btn btn-outline" onclick="scrollToId('contact')">Get in touch</button>
@@ -274,12 +282,13 @@ footer p{font-size:12px;color:var(--muted)}
       </div>
       <div class="contact-box">
         <div class="contact-left">
-          <h3>Let's make something together.</h3>
-          <p>Available for portrait sessions, events, short films and commissioned photography. Based in Portsmouth — happy to travel.</p>
-          <div class="contact-details">
-            <div class="contact-row"><div class="contact-icon">✉</div>raviwoolhouse@hotmail.com</div>
-            <div class="contact-row"><div class="contact-icon">📍</div>Portsmouth, England</div>
+          <h3 id="contact-heading">Let's make something together.</h3>
+          <p id="contact-subtext">Available for portrait sessions, events, short films and commissioned photography. Based in Portsmouth — happy to travel.</p>
+          <div class="contact-details" id="contact-details">
+            <div class="contact-row"><div class="contact-icon">✉</div><span id="contact-email-display">raviwoolhouse@hotmail.com</span></div>
+            <div class="contact-row"><div class="contact-icon">📍</div><span id="contact-location-display">Portsmouth, England</span></div>
           </div>
+          <div class="social-links" id="social-links-display"></div>
         </div>
         <div class="contact-form-side">
           <input type="text" id="cf-name" placeholder="Your name"/>
@@ -292,8 +301,8 @@ footer p{font-size:12px;color:var(--muted)}
     </div>
 
     <footer>
-      <div class="footer-logo">Ravi Woolhouse Read</div>
-      <p>© 2026 · Film, Photography &amp; Videography</p>
+      <div class="footer-logo" id="footer-logo">Ravi Woolhouse Read</div>
+      <p id="footer-text">© 2026 · Film, Photography &amp; Videography</p>
     </footer>
   </div>
 </div>
@@ -306,6 +315,7 @@ footer p{font-size:12px;color:var(--muted)}
   </div>
 </div>
 
+<!-- ADMIN -->
 <div id="admin-view">
   <div class="admin-header">
     <h1>Admin <span>/ Ravi Woolhouse Read</span></h1>
@@ -317,9 +327,11 @@ footer p{font-size:12px;color:var(--muted)}
   <div class="admin-tabs">
     <button class="admin-tab active" onclick="switchAdminTab('gallery',this)">Gallery</button>
     <button class="admin-tab" onclick="switchAdminTab('about',this)">About</button>
+    <button class="admin-tab" onclick="switchAdminTab('settings',this)">Site Settings</button>
     <button class="admin-tab" onclick="switchAdminTab('messages',this)">Messages</button>
   </div>
 
+  <!-- GALLERY -->
   <div class="admin-panel active" id="ap-gallery">
     <div class="admin-card">
       <h3>Add new item</h3>
@@ -377,6 +389,7 @@ footer p{font-size:12px;color:var(--muted)}
     </div>
   </div>
 
+  <!-- ABOUT -->
   <div class="admin-panel" id="ap-about">
     <div class="admin-card">
       <h3>About section</h3>
@@ -416,6 +429,107 @@ footer p{font-size:12px;color:var(--muted)}
     </div>
   </div>
 
+  <!-- SITE SETTINGS -->
+  <div class="admin-panel" id="ap-settings">
+    <div class="admin-card">
+      <h3>Navigation</h3>
+      <div class="form-group">
+        <label>Site name (shown in nav &amp; footer)</label>
+        <input type="text" id="s-sitename" placeholder="Ravi Woolhouse Read"/>
+      </div>
+      <div class="form-group">
+        <label>Nav links <span style="font-weight:300;text-transform:none;font-size:11px">(comma separated — these scroll to section IDs: work, about, contact)</span></label>
+        <input type="text" id="s-navlinks" placeholder="Work, About, Contact"/>
+        <p class="form-hint">Names shown in the nav bar. They scroll to the matching section automatically.</p>
+      </div>
+
+      <h4>Hero section</h4>
+      <div class="form-group">
+        <label>Eyebrow text</label>
+        <input type="text" id="s-eyebrow" placeholder="Film · Photography · Videography"/>
+      </div>
+      <div class="form-group">
+        <label>Heading <span style="font-weight:300;text-transform:none;font-size:11px">(use *word* for italic orange, use | for line break)</span></label>
+        <input type="text" id="s-heading" placeholder="Telling stories|through *light & motion.*"/>
+      </div>
+      <div class="form-group">
+        <label>Subtext</label>
+        <textarea id="s-subtext" style="min-height:70px" placeholder="I capture moments and craft narratives…"></textarea>
+      </div>
+
+      <h4>Contact section</h4>
+      <div class="form-group">
+        <label>Contact heading</label>
+        <input type="text" id="s-contactheading" placeholder="Let's make something together."/>
+      </div>
+      <div class="form-group">
+        <label>Contact subtext</label>
+        <textarea id="s-contactsubtext" style="min-height:70px" placeholder="Available for portrait sessions…"></textarea>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="s-email" placeholder="raviwoolhouse@hotmail.com"/>
+        </div>
+        <div class="form-group">
+          <label>Location</label>
+          <input type="text" id="s-location" placeholder="Portsmouth, England"/>
+        </div>
+      </div>
+
+      <h4>Social links <span style="font-weight:300;text-transform:none;font-size:11px">(leave blank to hide)</span></h4>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Instagram URL</label>
+          <input type="url" id="s-instagram" placeholder="https://instagram.com/yourhandle"/>
+        </div>
+        <div class="form-group">
+          <label>Instagram label</label>
+          <input type="text" id="s-instagram-label" placeholder="@yourhandle"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>YouTube URL</label>
+          <input type="url" id="s-youtube" placeholder="https://youtube.com/..."/>
+        </div>
+        <div class="form-group">
+          <label>YouTube label</label>
+          <input type="text" id="s-youtube-label" placeholder="YouTube"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Vimeo URL</label>
+          <input type="url" id="s-vimeo" placeholder="https://vimeo.com/..."/>
+        </div>
+        <div class="form-group">
+          <label>Vimeo label</label>
+          <input type="text" id="s-vimeo-label" placeholder="Vimeo"/>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label>Other link URL</label>
+          <input type="url" id="s-other-url" placeholder="https://..."/>
+        </div>
+        <div class="form-group">
+          <label>Other link label</label>
+          <input type="text" id="s-other-label" placeholder="Website"/>
+        </div>
+      </div>
+
+      <h4>Footer</h4>
+      <div class="form-group">
+        <label>Footer text</label>
+        <input type="text" id="s-footer" placeholder="© 2026 · Film, Photography & Videography"/>
+      </div>
+
+      <button class="btn btn-primary" style="margin-top:0.5rem" onclick="saveSettings()">Save settings ↗</button>
+    </div>
+  </div>
+
+  <!-- MESSAGES -->
   <div class="admin-panel" id="ap-messages">
     <div class="admin-card">
       <h3>Contact messages</h3>
@@ -478,6 +592,7 @@ function showAdminView() {
   document.getElementById('admin-view').classList.add('active');
   loadAdminGallery();
   loadAboutAdmin();
+  loadSettingsAdmin();
   loadMessages();
 }
 
@@ -521,15 +636,13 @@ async function cloudinaryUpload(file) {
   const fd = new FormData();
   fd.append('file', file);
   fd.append('upload_preset', PRESET);
-  const res = await fetch('https://api.cloudinary.com/v1_1/' + CLOUD + '/image/upload', {method:'POST', body:fd});
+  const res = await fetch('https://api.cloudinary.com/v1_1/' + CLOUD + '/image/upload', {method:'POST',body:fd});
   const data = await res.json();
   if (data.secure_url) return data.secure_url;
   throw new Error(data.error?.message || 'Upload failed');
 }
-
 window.handleUpload = async (input, urlId, labelId, previewId) => {
-  const file = input.files[0];
-  if (!file) return;
+  const file = input.files[0]; if (!file) return;
   const label = document.getElementById(labelId);
   const preview = document.getElementById(previewId);
   if (label) label.textContent = 'Uploading…';
@@ -545,6 +658,7 @@ window.handleUpload = async (input, urlId, labelId, previewId) => {
   }
 };
 
+// ── GALLERY ──
 async function loadGallery() {
   try {
     const snap = await getDocs(query(collection(db,'gallery'), orderBy('createdAt','desc')));
@@ -559,64 +673,26 @@ async function loadGallery() {
     });
   } catch(e) { console.error(e); }
 }
-
 function makeGalleryItem(item) {
   const div = document.createElement('div');
   div.className = 'gallery-item' + (item.aspect === 'tall' ? ' tall' : '');
-  div.innerHTML = `<div class="gallery-item-inner">${item.imgUrl ? '<img src="'+item.imgUrl+'" alt="'+item.title+'" loading="lazy"/>' : '<span style="font-size:11px;color:#5a4030;text-transform:uppercase">image</span>'}</div><div class="gallery-item-overlay"><div class="overlay-title">${item.title}</div><div class="overlay-tag">${item.tag||''}</div></div>`;
+  div.innerHTML = '<div class="gallery-item-inner">' + (item.imgUrl ? '<img src="'+item.imgUrl+'" alt="'+item.title+'" loading="lazy"/>' : '<span style="font-size:11px;color:#5a4030;text-transform:uppercase">image</span>') + '</div><div class="gallery-item-overlay"><div class="overlay-title">'+item.title+'</div><div class="overlay-tag">'+(item.tag||'')+'</div></div>';
   if (item.imgUrl) div.onclick = () => openLightbox(item.imgUrl, item.title + (item.tag ? ' · '+item.tag : ''));
   return div;
 }
 function makeVideoItem(item) {
   const div = document.createElement('div');
   div.className = 'video-item';
-  div.innerHTML = `<div class="video-thumb">${item.imgUrl?'<img src="'+item.imgUrl+'" alt="'+item.title+'" loading="lazy"/>':''}<div class="play-btn"><div class="play-triangle"></div></div></div><div class="video-info"><div class="video-title">${item.title}</div><div class="video-meta">${item.meta||''}</div></div>`;
+  div.innerHTML = '<div class="video-thumb">' + (item.imgUrl?'<img src="'+item.imgUrl+'" alt="'+item.title+'" loading="lazy"/>':'') + '<div class="play-btn"><div class="play-triangle"></div></div></div><div class="video-info"><div class="video-title">'+item.title+'</div><div class="video-meta">'+(item.meta||'')+'</div></div>';
   if (item.videoUrl) div.onclick = () => window.open(item.videoUrl, '_blank');
   return div;
 }
-
 window.openLightbox = (src, caption) => {
   document.getElementById('lightbox-img').src = src;
   document.getElementById('lightbox-caption').textContent = caption;
   document.getElementById('lightbox').classList.add('open');
 };
 window.closeLightbox = () => document.getElementById('lightbox').classList.remove('open');
-
-async function loadAbout() {
-  try {
-    const snap = await getDoc(doc(db,'site','about'));
-    if (!snap.exists()) return;
-    const d = snap.data();
-    if (d.heading) document.getElementById('about-heading').innerHTML = d.heading.replace(/\*(.*?)\*/g,'<em>$1</em>');
-    if (d.bio) document.getElementById('about-bio').innerHTML = d.bio.split(/\n\n+/).map(p=>'<p style="font-size:14px;color:var(--mid);line-height:1.8;margin-bottom:1rem">'+p+'</p>').join('');
-    if (d.disciplines) document.getElementById('disciplines-list').innerHTML = d.disciplines.split(',').map(s=>'<span class="disc">'+s.trim()+'</span>').join('');
-    if (d.portrait) document.getElementById('about-portrait-wrap').innerHTML = '<img src="'+d.portrait+'" alt="Ravi" style="width:100%;height:100%;object-fit:cover"/>';
-    if (d.heroImg) {
-      const wrap = document.getElementById('hero-img-wrap');
-      document.getElementById('hero-img-placeholder')?.remove();
-      if (!wrap.querySelector('img')) {
-        const img = document.createElement('img');
-        img.src = d.heroImg;
-        img.style.cssText = 'width:100%;height:100%;object-fit:cover;position:absolute;inset:0';
-        wrap.appendChild(img);
-      }
-    }
-  } catch(e) { console.error(e); }
-}
-
-window.submitContact = async () => {
-  const name = document.getElementById('cf-name').value.trim();
-  const email = document.getElementById('cf-email').value.trim();
-  const message = document.getElementById('cf-message').value.trim();
-  const msg = document.getElementById('contact-msg');
-  if (!name || !email || !message) { msg.className='form-msg error'; msg.textContent='Please fill in all fields.'; return; }
-  try {
-    await addDoc(collection(db,'messages'), {name, email, message, createdAt:serverTimestamp(), read:false});
-    msg.className='form-msg success';
-    msg.textContent="Message sent! I'll be in touch soon.";
-    ['cf-name','cf-email','cf-message'].forEach(id => { document.getElementById(id).value=''; });
-  } catch(e) { msg.className='form-msg error'; msg.textContent='Something went wrong. Please email directly.'; }
-};
 
 async function loadAdminGallery() {
   const list = document.getElementById('admin-gallery-list');
@@ -629,22 +705,18 @@ async function loadAdminGallery() {
       const item = {id:d.id,...d.data()};
       const row = document.createElement('div');
       row.className = 'item-row';
-      row.innerHTML = (item.imgUrl?'<img class="item-row-thumb" src="'+item.imgUrl+'" alt=""/>' : '<div class="item-row-thumb"></div>') +
-        '<div class="item-row-info"><div class="item-row-title">'+item.title+'</div><div class="item-row-meta"><span class="tag">'+item.category+'</span> '+(item.tag||'')+'</div></div>' +
-        '<div class="item-row-actions"><button class="btn btn-danger btn-sm" onclick="deleteItem(\''+item.id+'\')">Delete</button></div>';
+      row.innerHTML = (item.imgUrl?'<img class="item-row-thumb" src="'+item.imgUrl+'" alt=""/>':'<div class="item-row-thumb"></div>') + '<div class="item-row-info"><div class="item-row-title">'+item.title+'</div><div class="item-row-meta"><span class="tag">'+item.category+'</span> '+(item.tag||'')+'</div></div><div class="item-row-actions"><button class="btn btn-danger btn-sm" onclick="deleteItem(\''+item.id+'\')">Delete</button></div>';
       list.appendChild(row);
     });
   } catch(e) { list.innerHTML='<p style="font-size:13px;color:var(--muted)">Error loading items.</p>'; }
 }
-
 window.addGalleryItem = async () => {
   if (!currentUser) { showToast('Not signed in','error'); return; }
   const title = document.getElementById('g-title').value.trim();
   if (!title) { showToast('Please add a title','error'); return; }
   try {
     await addDoc(collection(db,'gallery'), {
-      title,
-      tag: document.getElementById('g-tag').value.trim(),
+      title, tag: document.getElementById('g-tag').value.trim(),
       category: document.getElementById('g-category').value,
       aspect: document.getElementById('g-aspect').value,
       imgUrl: document.getElementById('g-imgurl').value.trim(),
@@ -654,23 +726,35 @@ window.addGalleryItem = async () => {
     });
     showToast('Item added!');
     ['g-title','g-tag','g-imgurl','g-videourl','g-meta'].forEach(id => { document.getElementById(id).value=''; });
-    const lbl = document.getElementById('g-upload-label');
-    if (lbl) lbl.textContent = 'Click or drag to upload';
-    const prev = document.getElementById('g-upload-preview');
-    if (prev) prev.style.display = 'none';
-    await loadAdminGallery();
-    await loadGallery();
+    const lbl = document.getElementById('g-upload-label'); if(lbl) lbl.textContent='Click or drag to upload';
+    const prev = document.getElementById('g-upload-preview'); if(prev) prev.style.display='none';
+    await loadAdminGallery(); await loadGallery();
   } catch(e) { showToast('Error: '+e.message,'error'); }
 };
-
 window.deleteItem = async id => {
   if (!confirm('Delete this item?')) return;
   await deleteDoc(doc(db,'gallery',id));
   showToast('Deleted');
-  await loadAdminGallery();
-  await loadGallery();
+  await loadAdminGallery(); await loadGallery();
 };
 
+// ── ABOUT ──
+async function loadAbout() {
+  try {
+    const snap = await getDoc(doc(db,'site','about'));
+    if (!snap.exists()) return;
+    const d = snap.data();
+    if (d.heading) document.getElementById('about-heading').innerHTML = d.heading.replace(/\*(.*?)\*/g,'<em>$1</em>');
+    if (d.bio) document.getElementById('about-bio').innerHTML = d.bio.split(/\n\n+/).map(p=>'<p style="font-size:14px;color:var(--mid);line-height:1.8;margin-bottom:1rem">'+p+'</p>').join('');
+    if (d.disciplines) document.getElementById('disciplines-list').innerHTML = d.disciplines.split(',').map(s=>'<span class="disc">'+s.trim()+'</span>').join('');
+    if (d.portrait) document.getElementById('about-portrait-wrap').innerHTML = '<img src="'+d.portrait+'" alt="Ravi" style="width:100%;height:100%;object-fit:cover"/>';
+    if (d.heroImg) {
+      const wrap = document.getElementById('hero-img-wrap');
+      document.getElementById('hero-img-placeholder')?.remove();
+      if (!wrap.querySelector('img')) { const img = document.createElement('img'); img.src=d.heroImg; img.style.cssText='width:100%;height:100%;object-fit:cover;position:absolute;inset:0'; wrap.appendChild(img); }
+    }
+  } catch(e) { console.error(e); }
+}
 async function loadAboutAdmin() {
   try {
     const snap = await getDoc(doc(db,'site','about'));
@@ -679,11 +763,10 @@ async function loadAboutAdmin() {
     if (d.heading) document.getElementById('ab-heading').value = d.heading;
     if (d.bio) document.getElementById('ab-bio').value = d.bio;
     if (d.disciplines) document.getElementById('ab-disciplines').value = d.disciplines;
-    if (d.portrait) { document.getElementById('ab-portrait').value = d.portrait; const p=document.getElementById('ab-portrait-preview'); if(p){p.src=d.portrait;p.style.display='block';} }
-    if (d.heroImg) { document.getElementById('ab-hero').value = d.heroImg; const p=document.getElementById('ab-hero-preview'); if(p){p.src=d.heroImg;p.style.display='block';} }
+    if (d.portrait) { document.getElementById('ab-portrait').value=d.portrait; const p=document.getElementById('ab-portrait-preview'); if(p){p.src=d.portrait;p.style.display='block';} }
+    if (d.heroImg) { document.getElementById('ab-hero').value=d.heroImg; const p=document.getElementById('ab-hero-preview'); if(p){p.src=d.heroImg;p.style.display='block';} }
   } catch(e) { console.error(e); }
 }
-
 window.saveAbout = async () => {
   if (!currentUser) { showToast('Not signed in','error'); return; }
   try {
@@ -699,6 +782,130 @@ window.saveAbout = async () => {
   } catch(e) { showToast('Error: '+e.message,'error'); }
 };
 
+// ── SITE SETTINGS ──
+function applySettings(d) {
+  if (d.sitename) {
+    document.getElementById('nav-logo').textContent = d.sitename;
+    document.getElementById('footer-logo').textContent = d.sitename;
+    document.getElementById('loading-name').textContent = d.sitename;
+    document.title = d.sitename + ' — Film & Photography';
+  }
+  if (d.navlinks) {
+    const links = d.navlinks.split(',').map(s=>s.trim()).filter(Boolean);
+    const container = document.getElementById('nav-links');
+    container.innerHTML = '';
+    links.forEach(name => {
+      const a = document.createElement('a');
+      a.textContent = name;
+      a.onclick = () => scrollToId(name.toLowerCase());
+      container.appendChild(a);
+    });
+    const adminBtn = document.createElement('button');
+    adminBtn.className = 'nav-admin-btn';
+    adminBtn.textContent = 'Admin ⚙';
+    adminBtn.onclick = () => window.openAdmin();
+    container.appendChild(adminBtn);
+  }
+  if (d.eyebrow) document.getElementById('hero-eyebrow').textContent = d.eyebrow;
+  if (d.heading) {
+    const html = d.heading.replace(/\*(.*?)\*/g,'<em>$1</em>').replace(/\|/g,'<br/>');
+    document.getElementById('hero-heading').innerHTML = html;
+  }
+  if (d.subtext) document.getElementById('hero-sub').textContent = d.subtext;
+  if (d.contactHeading) document.getElementById('contact-heading').textContent = d.contactHeading;
+  if (d.contactSubtext) document.getElementById('contact-subtext').textContent = d.contactSubtext;
+  if (d.email) document.getElementById('contact-email-display').textContent = d.email;
+  if (d.location) document.getElementById('contact-location-display').textContent = d.location;
+  if (d.footer) document.getElementById('footer-text').textContent = d.footer;
+
+  const socials = document.getElementById('social-links-display');
+  socials.innerHTML = '';
+  [['instagram','instagram-label'],['youtube','youtube-label'],['vimeo','vimeo-label'],['otherUrl','other-label']].forEach(([urlKey, labelKey]) => {
+    if (d[urlKey] && d[urlKey.replace('Url','') + 'Label'] || d[urlKey] && d[labelKey]) {
+      const label = d[urlKey.replace('Url','') + 'Label'] || d[labelKey] || urlKey;
+      const a = document.createElement('a');
+      a.href = d[urlKey];
+      a.target = '_blank';
+      a.textContent = label;
+      socials.appendChild(a);
+    }
+  });
+}
+
+async function loadSettings() {
+  try {
+    const snap = await getDoc(doc(db,'site','settings'));
+    if (!snap.exists()) return;
+    applySettings(snap.data());
+  } catch(e) { console.error(e); }
+}
+
+async function loadSettingsAdmin() {
+  try {
+    const snap = await getDoc(doc(db,'site','settings'));
+    if (!snap.exists()) return;
+    const d = snap.data();
+    const map = {
+      's-sitename':'sitename','s-navlinks':'navlinks','s-eyebrow':'eyebrow',
+      's-heading':'heading','s-subtext':'subtext','s-contactheading':'contactHeading',
+      's-contactsubtext':'contactSubtext','s-email':'email','s-location':'location',
+      's-instagram':'instagram','s-instagram-label':'instagramLabel',
+      's-youtube':'youtube','s-youtube-label':'youtubeLabel',
+      's-vimeo':'vimeo','s-vimeo-label':'vimeoLabel',
+      's-other-url':'otherUrl','s-other-label':'otherLabel',
+      's-footer':'footer'
+    };
+    Object.entries(map).forEach(([elId, key]) => {
+      const el = document.getElementById(elId);
+      if (el && d[key]) el.value = d[key];
+    });
+  } catch(e) { console.error(e); }
+}
+
+window.saveSettings = async () => {
+  if (!currentUser) { showToast('Not signed in','error'); return; }
+  const data = {
+    sitename: document.getElementById('s-sitename').value.trim(),
+    navlinks: document.getElementById('s-navlinks').value.trim(),
+    eyebrow: document.getElementById('s-eyebrow').value.trim(),
+    heading: document.getElementById('s-heading').value.trim(),
+    subtext: document.getElementById('s-subtext').value.trim(),
+    contactHeading: document.getElementById('s-contactheading').value.trim(),
+    contactSubtext: document.getElementById('s-contactsubtext').value.trim(),
+    email: document.getElementById('s-email').value.trim(),
+    location: document.getElementById('s-location').value.trim(),
+    instagram: document.getElementById('s-instagram').value.trim(),
+    instagramLabel: document.getElementById('s-instagram-label').value.trim(),
+    youtube: document.getElementById('s-youtube').value.trim(),
+    youtubeLabel: document.getElementById('s-youtube-label').value.trim(),
+    vimeo: document.getElementById('s-vimeo').value.trim(),
+    vimeoLabel: document.getElementById('s-vimeo-label').value.trim(),
+    otherUrl: document.getElementById('s-other-url').value.trim(),
+    otherLabel: document.getElementById('s-other-label').value.trim(),
+    footer: document.getElementById('s-footer').value.trim(),
+  };
+  try {
+    await setDoc(doc(db,'site','settings'), data);
+    showToast('Settings saved!');
+    applySettings(data);
+  } catch(e) { showToast('Error: '+e.message,'error'); }
+};
+
+// ── CONTACT FORM ──
+window.submitContact = async () => {
+  const name = document.getElementById('cf-name').value.trim();
+  const email = document.getElementById('cf-email').value.trim();
+  const message = document.getElementById('cf-message').value.trim();
+  const msg = document.getElementById('contact-msg');
+  if (!name || !email || !message) { msg.className='form-msg error'; msg.textContent='Please fill in all fields.'; return; }
+  try {
+    await addDoc(collection(db,'messages'), {name, email, message, createdAt:serverTimestamp(), read:false});
+    msg.className='form-msg success'; msg.textContent="Message sent! I'll be in touch soon.";
+    ['cf-name','cf-email','cf-message'].forEach(id => { document.getElementById(id).value=''; });
+  } catch(e) { msg.className='form-msg error'; msg.textContent='Something went wrong. Please email directly.'; }
+};
+
+// ── MESSAGES ──
 async function loadMessages() {
   const list = document.getElementById('messages-list');
   list.innerHTML = '<p style="font-size:13px;color:var(--muted)">Loading…</p>';
@@ -717,8 +924,9 @@ async function loadMessages() {
   } catch(e) { list.innerHTML='<p style="font-size:13px;color:var(--muted)">Could not load messages.</p>'; }
 }
 
+// ── INIT ──
 async function init() {
-  await Promise.all([loadGallery(), loadAbout()]);
+  await Promise.all([loadGallery(), loadAbout(), loadSettings()]);
   document.getElementById('loading').classList.add('hide');
 }
 init();
